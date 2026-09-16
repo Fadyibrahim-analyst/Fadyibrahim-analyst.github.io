@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fady Ibrahim — Freelance Data Analyst</title>
+<meta name="description" content="Freelance data analyst helping small businesses, e-commerce brands, and retailers turn raw data into clear decisions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F3F5F4;
+    --surface: #FFFFFF;
+    --text: #14201E;
+    --text-soft: #4B5B58;
+    --line: #D9DED9;
+    --accent: #1F5C55;
+    --accent-soft: #E4ECEA;
+    --amber: #B9762F;
+    --focus: #1F5C55;
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --bg: #10201C;
+      --surface: #16302A;
+      --text: #EAF0EE;
+      --text-soft: #A9BDB8;
+      --line: #2C4740;
+      --accent: #6FBDA9;
+      --accent-soft: #1E3B34;
+      --amber: #D99A55;
+      --focus: #6FBDA9;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #10201C;
+    --surface: #16302A;
+    --text: #EAF0EE;
+    --text-soft: #A9BDB8;
+    --line: #2C4740;
+    --accent: #6FBDA9;
+    --accent-soft: #1E3B34;
+    --amber: #D99A55;
+    --focus: #6FBDA9;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    line-height: 1.6;
+  }
+  a { color: var(--accent); }
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  section { padding: 64px 0; }
+  section + section { border-top: 1px solid var(--line); }
+
+  /* Nav */
+  header.nav {
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 10;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-name {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-soft);
+    font-size: 0.92rem;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* Hero */
+  .hero { padding-top: 72px; }
+  .kicker {
+    color: var(--accent);
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin: 0 0 14px;
+  }
+  h1 {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 0 0 20px;
+    max-width: 15ch;
+  }
+  .hero-sub {
+    font-size: 1.12rem;
+    color: var(--text-soft);
+    max-width: 56ch;
+    margin: 0 0 32px;
+  }
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 56px; }
+  .btn {
+    display: inline-block;
+    padding: 13px 24px;
+    border-radius: 6px;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 0.98rem;
+  }
+  .btn-primary { background: var(--accent); color: var(--surface); }
+  .btn-primary:hover { opacity: 0.92; }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--line);
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Stat strip */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .stat {
+    padding: 24px 20px;
+    border-right: 1px solid var(--line);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--accent);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.84rem;
+    color: var(--text-soft);
+    margin-top: 4px;
+    display: block;
+  }
+  @media (max-width: 640px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .stat:nth-child(2) { border-right: none; }
+  }
+
+  /* Section headings */
+  h2 {
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+    font-size: 1.7rem;
+    margin: 0 0 32px;
+  }
+
+  /* About */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 48px;
+  }
+  @media (max-width: 700px) {
+    .about-grid { grid-template-columns: 1fr; }
+  }
+  .about-grid p { color: var(--text-soft); margin: 0 0 16px; }
+  .facts { list-style: none; padding: 0; margin: 0; }
+  .facts li {
+    padding: 12px 0;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.92rem;
+    gap: 12px;
+  }
+  .facts li:last-child { border-bottom: 1px solid var(--line); }
+  .facts .k { color: var(--text-soft); }
+  .facts .v { text-align: right; font-weight: 500; }
+
+  /* Services */
+  .service-row {
+    display: grid;
+    grid-template-columns: 1.6fr 2.4fr auto;
+    gap: 20px;
+    align-items: center;
+    padding: 22px 0;
+    border-top: 1px solid var(--line);
+  }
+  .service-row:last-child { border-bottom: 1px solid var(--line); }
+  .service-title { font-weight: 600; }
+  .service-desc { color: var(--text-soft); font-size: 0.95rem; }
+  .service-link {
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  @media (max-width: 700px) {
+    .service-row { grid-template-columns: 1fr; gap: 8px; }
+    .service-link { justify-self: start; }
+  }
+
+  /* Projects */
+  .project {
+    padding: 32px 0;
+    border-top: 1px solid var(--line);
+  }
+  .project:last-child { border-bottom: 1px solid var(--line); }
+  .project-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .project-title {
+    font-family: "Fraunces", serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 0;
+  }
+  .project-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag {
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 3px 8px;
+  }
+  .project-desc {
+    color: var(--text-soft);
+    margin: 14px 0 12px;
+    max-width: 66ch;
+  }
+  .project-metric {
+    font-family: "IBM Plex Mono", monospace;
+    color: var(--accent);
+    font-size: 0.9rem;
+  }
+  .project-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  /* Skills */
+  .skill-groups {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 40px;
+  }
+  @media (max-width: 640px) {
+    .skill-groups { grid-template-columns: 1fr; }
+  }
+  .skill-group h3 {
+    font-size: 0.85rem;
+    text-transform: none;
+    color: var(--text-soft);
+    font-weight: 500;
+    margin: 0 0 12px;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tag {
+    font-size: 0.88rem;
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+  }
+
+  /* Credentials */
+  .credential {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+  .credential:last-child { border-bottom: 1px solid var(--line); }
+  .credential-name { font-weight: 500; }
+  .credential-issuer { color: var(--text-soft); font-size: 0.9rem; }
+  .status-badge {
+    font-size: 0.78rem;
+    padding: 3px 9px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .status-done { background: var(--accent-soft); color: var(--accent); }
+  .status-progress { background: rgba(185,118,47,0.14); color: var(--amber); }
+
+  /* Contact */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 640px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+  .contact-card {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 22px;
+  }
+  .contact-card .label {
+    font-size: 0.82rem;
+    color: var(--text-soft);
+    margin-bottom: 6px;
+  }
+  .contact-card a {
+    font-weight: 500;
+    text-decoration: none;
+    word-break: break-word;
+  }
+  .contact-cta {
+    margin-top: 40px;
+    padding: 32px;
+    border-radius: 10px;
+    background: var(--accent-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .contact-cta h3 {
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+    margin: 0 0 6px;
+    font-size: 1.25rem;
+  }
+  .contact-cta p { margin: 0; color: var(--text-soft); }
+
+  footer {
+    padding: 32px 0 48px;
+    font-size: 0.85rem;
+    color: var(--text-soft);
+  }
+
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero h1, .hero-sub, .cta-row {
+      animation: rise 0.6s ease-out both;
+    }
+    .hero-sub { animation-delay: 0.08s; }
+    .cta-row { animation-delay: 0.16s; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="nav-name" href="#top">Fady Ibrahim</a>
+    <nav class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div id="top"></div>
+
+<section class="hero container">
+  <p class="kicker">Freelance Data Analyst</p>
+  <h1>Data that tells you what to do next.</h1>
+  <p class="hero-sub">I clean, analyze, and visualize business data for small businesses, e-commerce brands, and retailers — so you spend less time in spreadsheets and more time making decisions.</p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="https://claude.ai/artifact/3sUGFQQhoPPU5vqUWgDWZ4">Request a project</a>
+    <a class="btn btn-secondary" href="#work">See the work</a>
+  </div>
+</section>
+
+<div class="container">
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-num">70%</span>
+      <span class="stat-label">Stockout reduction achieved at Domanza</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">31M EGP</span>
+      <span class="stat-label">Revenue analyzed in e-commerce dashboard</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">4</span>
+      <span class="stat-label">Person inventory team led</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">1.5+</span>
+      <span class="stat-label">Years in operations &amp; data</span>
+    </div>
+  </div>
+</div>
+
+<section class="container" id="about">
+  <h2>About</h2>
+  <div class="about-grid">
+    <div>
+      <p>I help small businesses, e-commerce brands, and retailers make sense of their data — without the jargon or the wait. My background is in operations and supply chain at Domanza, where I led inventory reporting for a four-person team and helped cut stockouts by 70%. That's where I learned how messy real business data actually is, and how much clearer decisions become once it's organized.</p>
+      <p>Today I specialize in cleaning, validating, and analyzing data in Excel, SQL, and Power BI, then turning it into dashboards and reports that tell you exactly what's happening in your business — and what to do next. I work fast, keep things simple, and only deliver what you can actually use.</p>
+    </div>
+    <ul class="facts">
+      <li><span class="k">Based in</span><span class="v">Cairo, Egypt</span></li>
+      <li><span class="k">Background</span><span class="v">Operations &amp; Supply Chain</span></li>
+      <li><span class="k">Tools</span><span class="v">Excel · SQL · Power BI · Python</span></li>
+      <li><span class="k">Availability</span><span class="v">Open for projects</span></li>
+      <li><span class="k">Reply time</span><span class="v">1&ndash;2 business days</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="container" id="services">
+  <h2>Services</h2>
+
+  <div class="service-row">
+    <div class="service-title">Data Cleaning &amp; Validation</div>
+    <div class="service-desc">Messy Excel or CSV files organized, de-duplicated, and error-checked so they're ready to analyze.</div>
+    <a class="service-link" href="https://claude.ai/artifact/3sUGFQQhoPPU5vqUWgDWZ4?service=Data%20Cleaning">Request this &rsaquo;</a>
+  </div>
+
+  <div class="service-row">
+    <div class="service-title">Dashboard Creation</div>
+    <div class="service-desc">Power BI or Excel dashboards for tracking sales, inventory, or operations at a glance.</div>
+    <a class="service-link" href="https://claude.ai/artifact/3sUGFQQhoPPU5vqUWgDWZ4?service=Dashboard">Request this &rsaquo;</a>
+  </div>
+
+  <div class="service-row">
+    <div class="service-title">SQL Data Analysis</div>
+    <div class="service-desc">Custom queries built to answer specific business questions directly from your data.</div>
+    <a class="service-link" href="https://claude.ai/artifact/3sUGFQQhoPPU5vqUWgDWZ4?service=SQL">Request this &rsaquo;</a>
+  </div>
+
+  <div class="service-row">
+    <div class="service-title">Business Reports</div>
+    <div class="service-desc">Clear, one-page or multi-page reports with charts and plain-language recommendations.</div>
+    <a class="service-link" href="https://claude.ai/artifact/3sUGFQQhoPPU5vqUWgDWZ4?service=Reports">Request this &rsaquo;</a>
+  </div>
+
+  <div class="service-row">
+    <div class="service-title">Quick-Turnaround Tasks</div>
+    <div class="service-desc">Small, well-defined jobs — a single report, a pivot table fix, a chart — for clients who don't need a full project.</div>
+    <a class="service-link" href="https://claude.ai/artifact/3sUGFQQhoPPU5vqUWgDWZ4?service=Quick">Request this &rsaquo;</a>
+  </div>
+</section>
+
+<section class="container" id="work">
+  <h2>Selected work</h2>
+
+  <div class="project">
+    <div class="project-head">
+      <h3 class="project-title">E-Commerce Sales Analysis</h3>
+      <div class="project-tags"><span class="tag">SQL</span><span class="tag">MySQL</span></div>
+    </div>
+    <p class="project-desc">A full SQL analytics workflow across a four-table e-commerce dataset — customers, products, orders, and sales. Production-ready queries answer questions like top-performing products, revenue by category, and customer purchase patterns.</p>
+    <a class="project-link" href="https://github.com/Fadyibrahim-analyst/SQL-Ecommerce-Analytics" target="_blank" rel="noopener">View on GitHub &rsaquo;</a>
+  </div>
+
+  <div class="project">
+    <div class="project-head">
+      <h3 class="project-title">E-Commerce Performance Dashboard</h3>
+      <div class="project-tags"><span class="tag">Power BI</span><span class="tag">DAX</span></div>
+    </div>
+    <p class="project-desc">An interactive Power BI dashboard tracking <span class="project-metric">~31M EGP</span> in total revenue across product categories, surfacing that Electronics drove <span class="project-metric">86.3%</span> of sales. Built for stakeholders to filter and explore without touching raw data.</p>
+    <a class="project-link" href="https://github.com/Fadyibrahim-analyst/PowerBI-Ecommerce-Dashboard" target="_blank" rel="noopener">View on GitHub &rsaquo;</a>
+  </div>
+
+  <div class="project">
+    <div class="project-head">
+      <h3 class="project-title">Employee Attrition Analysis</h3>
+      <div class="project-tags"><span class="tag">Excel</span><span class="tag">SQL</span><span class="tag">Power BI</span></div>
+    </div>
+    <p class="project-desc">End-to-end HR analysis on the IBM HR dataset: a multi-sheet Excel workbook with engineered features and pivot tables, a MySQL database for querying, and a dashboard with a stakeholder-facing brief on what drives employee attrition and retention.</p>
+    <a class="project-link" href="https://github.com/Fadyibrahim-analyst/IBM-HR-Attrition-Analysis" target="_blank" rel="noopener">View on GitHub &rsaquo;</a>
+  </div>
+</section>
+
+<section class="container" id="skills">
+  <h2>Skills</h2>
+  <div class="skill-groups">
+    <div class="skill-group">
+      <h3>Data preparation</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Data Cleaning</span>
+        <span class="skill-tag">Data Validation</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Analysis &amp; reporting</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Data Analysis</span>
+        <span class="skill-tag">Business Reports</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Visualization</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Dashboards</span>
+        <span class="skill-tag">Power BI</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Tools</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Excel</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Python</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container" id="credentials">
+  <h2>Credentials</h2>
+
+  <div class="credential">
+    <div>
+      <div class="credential-name">AI for You</div>
+      <div class="credential-issuer">Oracle</div>
+    </div>
+    <span class="status-badge status-done">Completed</span>
+  </div>
+
+  <div class="credential">
+    <div>
+      <div class="credential-name">Data Fundamentals</div>
+      <div class="credential-issuer">IBM</div>
+    </div>
+    <span class="status-badge status-done">Completed</span>
+  </div>
+
+  <div class="credential">
+    <div>
+      <div class="credential-name">Professional Data Analytics</div>
+      <div class="credential-issuer">DEPI — Digital Egypt Pioneers Initiative</div>
+    </div>
+    <span class="status-badge status-progress">In progress</span>
+  </div>
+
+  <div class="credential">
+    <div>
+      <div class="credential-name">Google Analytics with Looker</div>
+      <div class="credential-issuer">Google</div>
+    </div>
+    <span class="status-badge status-progress">In progress</span>
+  </div>
+</section>
+
+<section class="container" id="contact">
+  <h2>Contact</h2>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="label">Email</div>
+      <a href="mailto:fadyibrahim987@gmail.com">fadyibrahim987@gmail.com</a>
+    </div>
+    <div class="contact-card">
+      <div class="label">WhatsApp</div>
+      <a href="https://wa.me/201061551073" target="_blank" rel="noopener">+20 106 155 1073</a>
+    </div>
+    <div class="contact-card">
+      <div class="label">LinkedIn</div>
+      <a href="https://www.linkedin.com/in/fady-ibrahim-data-analyst/" target="_blank" rel="noopener">/in/fady-ibrahim-data-analyst</a>
+    </div>
+  </div>
+
+  <div class="contact-cta">
+    <div>
+      <h3>Have a project in mind?</h3>
+      <p>Tell me what you need and I'll get back to you within 1&ndash;2 business days.</p>
+    </div>
+    <a class="btn btn-primary" href="https://claude.ai/artifact/3sUGFQQhoPPU5vqUWgDWZ4">Request a project</a>
+  </div>
+</section>
+
+<footer class="container">
+  <p>© 2026 Fady Ibrahim. Freelance data analyst based in Cairo, Egypt.</p>
+</footer>
+
+</body>
+</html>
