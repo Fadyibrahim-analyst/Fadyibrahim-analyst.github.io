@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request a Project — Fady Ibrahim, Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F3F5F4;
+    --surface: #FFFFFF;
+    --text: #14201E;
+    --text-soft: #4B5B58;
+    --line: #D9DED9;
+    --accent: #1F5C55;
+    --accent-soft: #E4ECEA;
+    --amber: #B9762F;
+    --focus: #1F5C55;
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --bg: #10201C;
+      --surface: #16302A;
+      --text: #EAF0EE;
+      --text-soft: #A9BDB8;
+      --line: #2C4740;
+      --accent: #6FBDA9;
+      --accent-soft: #1E3B34;
+      --amber: #D99A55;
+      --focus: #6FBDA9;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #10201C;
+    --surface: #16302A;
+    --text: #EAF0EE;
+    --text-soft: #A9BDB8;
+    --line: #2C4740;
+    --accent: #6FBDA9;
+    --accent-soft: #1E3B34;
+    --amber: #D99A55;
+    --focus: #6FBDA9;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    line-height: 1.55;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+  a { color: var(--accent); }
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: var(--text-soft);
+    margin-bottom: 40px;
+  }
+  .back:hover { color: var(--accent); }
+  h1 {
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    line-height: 1.15;
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+  }
+  .lede {
+    color: var(--text-soft);
+    max-width: 52ch;
+    font-size: 1.05rem;
+    margin: 0 0 40px;
+  }
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0 0 40px;
+  }
+  legend {
+    font-family: "Fraunces", serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    padding: 0 0 16px;
+    border-bottom: 1px solid var(--line);
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .field { margin-bottom: 20px; }
+  .field label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .hint {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--text-soft);
+    font-weight: 400;
+    margin-top: 2px;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  textarea {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 11px 13px;
+    font: inherit;
+    color: var(--text);
+  }
+  textarea { resize: vertical; min-height: 110px; }
+  input:focus, select:focus, textarea:focus {
+    outline: 2px solid var(--focus);
+    outline-offset: 1px;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 560px) {
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+  .check-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+  }
+  @media (max-width: 560px) {
+    .check-grid { grid-template-columns: 1fr; }
+  }
+  .check-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    font-size: 0.94rem;
+  }
+  .check-row input { margin-top: 4px; width: auto; }
+  .required { color: var(--amber); }
+  .submit-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  button.primary {
+    background: var(--accent);
+    color: var(--surface);
+    border: none;
+    border-radius: 6px;
+    padding: 13px 26px;
+    font: inherit;
+    font-weight: 500;
+    font-size: 0.98rem;
+    cursor: pointer;
+  }
+  button.primary:hover { opacity: 0.92; }
+  button.primary:disabled { opacity: 0.6; cursor: default; }
+  .status {
+    font-size: 0.9rem;
+    color: var(--text-soft);
+  }
+  #confirm {
+    display: none;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--accent-soft);
+    padding: 28px;
+  }
+  #confirm h2 {
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+    margin: 0 0 8px;
+    font-size: 1.4rem;
+  }
+  #confirm p { color: var(--text-soft); margin: 0 0 4px; }
+  iframe.hidden-frame { display: none; }
+  .direct-note {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    font-size: 0.9rem;
+    color: var(--text-soft);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="https://fadyibrahim-analyst.github.io/">&larr; Back to portfolio</a>
+
+  <h1>Tell me about your project</h1>
+  <p class="lede">Fill this in with as much detail as you have. I read every request myself and reply within 1&ndash;2 business days &mdash; sooner for quick tasks.</p>
+
+  <form id="requestForm" action="https://script.google.com/macros/s/AKfycbwD3dT13X06YqdlbRUCs1Q3EzsytTaHOdyAEaXVmTboRlziuFueTI2WCLVi3j5kCbWv/exec" method="POST" target="hidden_iframe">
+
+    <fieldset>
+      <legend>Your details</legend>
+      <div class="grid-2">
+        <div class="field">
+          <label for="fullName">Full name <span class="required">*</span></label>
+          <input type="text" id="fullName" name="fullName" required>
+        </div>
+        <div class="field">
+          <label for="email">Email <span class="required">*</span></label>
+          <input type="email" id="email" name="email" required>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label for="whatsapp">WhatsApp / phone</label>
+          <input type="tel" id="whatsapp" name="whatsapp" placeholder="e.g. +20 106 155 1073">
+        </div>
+        <div class="field">
+          <label for="company">Business / company name</label>
+          <input type="text" id="company" name="company" placeholder="Leave blank if personal">
+        </div>
+      </div>
+      <div class="field">
+        <label for="preferredContact">Preferred contact method</label>
+        <select id="preferredContact" name="preferredContact">
+          <option value="Email">Email</option>
+          <option value="WhatsApp">WhatsApp</option>
+        </select>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>The request</legend>
+      <div class="field">
+        <label for="requestType">What kind of request is this? <span class="required">*</span></label>
+        <select id="requestType" name="requestType" required>
+          <option value="">Choose one</option>
+          <option value="One-off project">One-off project</option>
+          <option value="Ongoing collaboration">Ongoing collaboration</option>
+          <option value="Quick task / minor fix">Quick task / minor fix</option>
+          <option value="Consultation / advice only">Consultation / advice only</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Which service(s) do you need? <span class="required">*</span></label>
+        <div class="check-grid">
+          <label class="check-row"><input type="checkbox" name="services" value="Data Cleaning & Validation">Data cleaning &amp; validation</label>
+          <label class="check-row"><input type="checkbox" name="services" value="Dashboard Creation (Power BI/Excel)">Dashboard creation (Power BI / Excel)</label>
+          <label class="check-row"><input type="checkbox" name="services" value="SQL Data Analysis">SQL data analysis</label>
+          <label class="check-row"><input type="checkbox" name="services" value="Business Reports">Business reports</label>
+          <label class="check-row"><input type="checkbox" name="services" value="Quick-Turnaround Task">Quick-turnaround task</label>
+          <label class="check-row"><input type="checkbox" name="services" value="Not sure / Other">Not sure / other</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="description">Describe what you need <span class="required">*</span></label>
+        <textarea id="description" name="description" required placeholder="What's the business question you're trying to answer? What should the end result look like?"></textarea>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Your data</legend>
+      <div class="grid-2">
+        <div class="field">
+          <label for="dataFormat">What format is your data in?</label>
+          <select id="dataFormat" name="dataFormat">
+            <option value="">Choose one</option>
+            <option value="Excel / CSV">Excel / CSV</option>
+            <option value="SQL database">SQL database</option>
+            <option value="Google Sheets">Google Sheets</option>
+            <option value="PDF / scanned documents">PDF / scanned documents</option>
+            <option value="Not sure">Not sure</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="dataSize">Roughly how much data?</label>
+          <select id="dataSize" name="dataSize">
+            <option value="">Choose one</option>
+            <option value="Small (under 1,000 rows)">Small (under 1,000 rows)</option>
+            <option value="Medium (1,000–100,000 rows)">Medium (1,000&ndash;100,000 rows)</option>
+            <option value="Large (100,000+ rows)">Large (100,000+ rows)</option>
+            <option value="Not sure">Not sure</option>
+          </select>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Timeline &amp; budget</legend>
+      <div class="grid-2">
+        <div class="field">
+          <label for="timeline">When do you need this by?</label>
+          <select id="timeline" name="timeline">
+            <option value="">Choose one</option>
+            <option value="ASAP / within 48 hours">ASAP / within 48 hours</option>
+            <option value="Within a week">Within a week</option>
+            <option value="2–4 weeks">2&ndash;4 weeks</option>
+            <option value="Flexible / no rush">Flexible / no rush</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="budget">Budget range</label>
+          <select id="budget" name="budget">
+            <option value="">Choose one</option>
+            <option value="Under $50">Under $50</option>
+            <option value="$50–150">$50&ndash;150</option>
+            <option value="$150–500">$150&ndash;500</option>
+            <option value="$500+">$500+</option>
+            <option value="Prefer to discuss">Prefer to discuss</option>
+          </select>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Anything else</legend>
+      <div class="field">
+        <label for="source">How did you find me?</label>
+        <select id="source" name="source">
+          <option value="">Choose one</option>
+          <option value="LinkedIn">LinkedIn</option>
+          <option value="GitHub">GitHub</option>
+          <option value="Referral">Referral</option>
+          <option value="Upwork / Fiverr">Upwork / Fiverr</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="notes">Additional notes</label>
+        <textarea id="notes" name="notes" placeholder="Anything else worth knowing. If you have files to share, mention it here — I'll follow up by email to collect them."></textarea>
+        <span class="hint">This form doesn't accept file uploads. I'll email you to collect any files once I see your request.</span>
+      </div>
+    </fieldset>
+
+    <div class="submit-row">
+      <button class="primary" type="submit" id="submitBtn">Send request</button>
+      <span class="status" id="statusText"></span>
+    </div>
+  </form>
+
+  <div id="confirm">
+    <h2>Request received</h2>
+    <p>Thanks — I'll review this and get back to you within 1&ndash;2 business days.</p>
+    <p>Prefer a faster reply? Message me directly on WhatsApp: <a href="https://wa.me/201061551073" target="_blank" rel="noopener">+20 106 155 1073</a></p>
+  </div>
+
+  <p class="direct-note">Trouble with the form? Email me directly at <a href="mailto:fadyibrahim987@gmail.com">fadyibrahim987@gmail.com</a> with the same details.</p>
+</div>
+
+<iframe name="hidden_iframe" class="hidden-frame" title="form submission target"></iframe>
+
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var preselect = params.get('service');
+    if (preselect) {
+      document.querySelectorAll('input[name="services"]').forEach(function (box) {
+        if (box.value.toLowerCase().indexOf(preselect.toLowerCase()) !== -1) {
+          box.checked = true;
+        }
+      });
+    }
+  })();
+
+  var form = document.getElementById('requestForm');
+  var btn = document.getElementById('submitBtn');
+  var statusText = document.getElementById('statusText');
+
+  form.addEventListener('submit', function () {
+    btn.disabled = true;
+    statusText.textContent = 'Sending…';
+    setTimeout(function () {
+      form.style.display = 'none';
+      document.getElementById('confirm').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 1400);
+  });
+</script>
+</body>
+</html>
